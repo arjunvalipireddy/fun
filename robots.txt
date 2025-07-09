@@ -1,2 +1,10 @@
-# https://www.robotstxt.org/robotstxt.html
+# Group 1
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
+# Group 2
 User-agent: *
+Allow: /
+
+Sitemap: https://www.taarkik.com/sitemap.xml
+

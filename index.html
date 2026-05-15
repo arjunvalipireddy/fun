@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Taarkik Vajyoth — DJ, Rock Star, Sportsman. Welcome to my world.">
+<meta name="google-adsense-account" content="ca-pub-7629250773832084">
+<title>Taarkik — DJ · Rock Star · Sportsman</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #080808;
+  --dark: #111111;
+  --card: #1a1a1a;
+  --yellow: #FFE600;
+  --pink: #B44FE8;
+  --blue: #00C2FF;
+  --green: #00FF87;
+  --white: #ffffff;
+  --muted: #888888;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+
+/* CURSOR */
+body{cursor:none;}
+.cursor{width:16px;height:16px;border-radius:50%;background:var(--yellow);position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .2s,height .2s,background .2s;mix-blend-mode:difference;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,8,0.8);backdrop-filter:blur(20px);}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.1em;color:var(--yellow);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--yellow);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr;padding:0;position:relative;overflow:hidden;}
+.hero-left{background:var(--yellow);display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;position:relative;overflow:hidden;}
+.hero-right{display:grid;grid-template-rows:1fr 1fr;overflow:hidden;}
+.hero-right-top{background:var(--pink);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.hero-right-bottom{background:var(--blue);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+
+/* POP ART NAME */
+.pop-name{font-family:'Bebas Neue',sans-serif;line-height:.85;letter-spacing:-.02em;position:relative;z-index:2;}
+.pop-name .n1{font-size:clamp(4rem,11vw,10rem);color:var(--black);display:block;animation:stamp 1s cubic-bezier(.17,.67,.35,1.2) both;word-break:break-word;}
+.pop-name .n2{display:none;}
+.pop-name .n3{display:none;}
+@keyframes stamp{0%{opacity:0;transform:scale(1.4) rotate(-3deg);}100%{opacity:1;transform:scale(1) rotate(0deg);}}
+
+/* HALFTONE DOT BG */
+.hero-left::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,0.15) 1.5px,transparent 1.5px);background-size:18px 18px;z-index:1;}
+.hero-right-top::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.2) 1.5px,transparent 1.5px);background-size:18px 18px;}
+.hero-right-bottom::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.2) 1.5px,transparent 1.5px);background-size:18px 18px;}
+
+/* RIGHT PANEL TEXT */
+.panel-word{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,7rem);letter-spacing:-.02em;position:relative;z-index:1;text-align:center;line-height:1;}
+.hero-right-top .panel-word{color:var(--black);}
+.hero-right-bottom .panel-word{color:var(--yellow);}
+.panel-sub{font-size:.75rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;position:relative;z-index:1;margin-top:.25rem;text-align:center;}
+.hero-right-top .panel-sub{color:rgba(0,0,0,0.5);}
+.hero-right-bottom .panel-sub{color:rgba(255,230,0,0.6);}
+
+/* BOTTOM TAG + ACTIONS */
+.hero-bottom{position:absolute;bottom:0;left:0;right:0;background:var(--black);display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;z-index:10;border-top:3px solid var(--black);}
+.hero-tag-pop{font-size:.75rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:var(--yellow);}
+.hero-nav-pills{display:flex;gap:.75rem;}
+.hero-nav-pill{padding:.45rem 1.2rem;border-radius:4px;font-size:.8rem;font-weight:900;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;}
+.hero-nav-pill.y{background:var(--yellow);color:var(--black);}
+.hero-nav-pill.o{background:transparent;border:2px solid rgba(255,255,255,0.3);color:var(--white);}
+.hero-nav-pill.o:hover{border-color:var(--yellow);color:var(--yellow);}
+
+/* SCROLL INDICATOR */
+.scroll-hint{position:absolute;bottom:4rem;left:3rem;display:flex;flex-direction:column;align-items:flex-start;gap:.5rem;color:rgba(0,0,0,0.4);font-size:.7rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;z-index:2;animation:bounce 2s infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+/* STICKER */
+.sticker{position:absolute;background:var(--black);color:var(--yellow);font-family:'Permanent Marker',cursive;font-size:1rem;padding:.5rem 1rem;transform:rotate(-8deg);z-index:3;border-radius:4px;}
+
+/* SILHOUETTE */
+.silhouette-wrap{position:absolute;bottom:0;right:0;height:90%;z-index:2;display:flex;align-items:flex-end;}
+.silhouette-wrap img{height:100%;width:auto;object-fit:contain;filter:brightness(0) saturate(100%);animation:silhouette-rise 1.2s cubic-bezier(.17,.67,.35,1.2) .4s both;transform-origin:bottom center;}
+@keyframes silhouette-rise{0%{opacity:0;transform:translateY(60px) scale(.95);}100%{opacity:1;transform:translateY(0) scale(1);}}
+.silhouette-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(0deg,var(--yellow),transparent);pointer-events:none;}
+
+.hero-tiles{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;}
+.role-tile{position:relative;width:180px;height:220px;border-radius:20px;overflow:hidden;border:2px solid transparent;transition:all .3s;cursor:pointer;text-decoration:none;}
+.role-tile:hover{transform:translateY(-8px) scale(1.03);}
+.role-tile.music{border-color:var(--pink);}
+.role-tile.sport{border-color:var(--blue);}
+.role-tile.life{border-color:var(--green);}
+.role-tile img{width:100%;height:100%;object-fit:cover;display:block;}
+.role-tile-label{position:absolute;bottom:0;left:0;right:0;padding:.75rem 1rem;font-size:.85rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:.4rem;}
+.role-tile.music .role-tile-label{background:linear-gradient(0deg,rgba(255,60,172,0.9),transparent);color:#fff;}
+.role-tile.sport .role-tile-label{background:linear-gradient(0deg,rgba(0,194,255,0.9),transparent);color:#fff;}
+.role-tile.life .role-tile-label{background:linear-gradient(0deg,rgba(0,255,135,0.9),transparent);color:#fff;}
+
+.hero-bio{font-size:1.1rem;color:var(--muted);max-width:560px;line-height:1.8;margin:0 auto 3rem;}
+.hero-bio strong{color:var(--white);}
+
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-yellow{background:var(--yellow);color:var(--black);padding:.9rem 2.2rem;border-radius:8px;font-weight:900;font-size:1rem;text-decoration:none;letter-spacing:.04em;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;}
+.btn-yellow:hover{transform:translateY(-3px) scale(1.03);}
+.btn-ghost{background:transparent;color:var(--white);padding:.9rem 2.2rem;border-radius:8px;font-weight:800;font-size:1rem;text-decoration:none;letter-spacing:.04em;border:2px solid rgba(255,255,255,0.2);transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;}
+.btn-ghost:hover{border-color:var(--yellow);color:var(--yellow);}
+
+/* SCROLL INDICATOR */
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--muted);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;animation:bounce 2s infinite;}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+
+/* ABOUT */
+.about{padding:6rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-img-wrap{position:relative;}
+.about-img-frame{background:var(--card);border-radius:20px;overflow:hidden;border:2px solid rgba(255,230,0,0.2);aspect-ratio:4/5;}
+.about-img-frame img{width:100%;height:100%;object-fit:cover;}
+.about-img-badge{position:absolute;bottom:-20px;right:-20px;background:var(--yellow);color:var(--black);border-radius:12px;padding:1rem 1.5rem;font-weight:900;font-size:.9rem;text-align:center;line-height:1.3;}
+.about-content .section-tag{font-size:.75rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--yellow);margin-bottom:1rem;}
+h2.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,5rem);line-height:1;margin-bottom:1.5rem;}
+h2.section-title span{color:var(--yellow);}
+.about-text{color:var(--muted);font-size:1rem;line-height:1.9;margin-bottom:1rem;}
+.about-text strong{color:var(--white);}
+
+/* MUSIC */
+.music{padding:6rem 4rem;background:var(--dark);}
+.music-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem;}
+.track-card{background:var(--card);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);transition:all .3s;position:relative;}
+.track-card:hover{transform:translateY(-6px);border-color:var(--pink);}
+.track-iframe{width:100%;aspect-ratio:16/9;border:none;}
+.track-label{padding:1rem 1.2rem;}
+.track-label h3{font-size:.95rem;font-weight:800;margin-bottom:.25rem;}
+.track-label p{font-size:.8rem;color:var(--muted);}
+
+/* VIDEOS */
+.videos{padding:6rem 4rem;}
+.videos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem;}
+.video-card{background:var(--card);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);transition:all .3s;}
+.video-card:hover{transform:translateY(-6px);border-color:var(--blue);}
+.video-card iframe{width:100%;aspect-ratio:16/9;border:none;display:block;}
+.video-label{padding:1rem 1.2rem;}
+.video-label h3{font-size:.95rem;font-weight:800;margin-bottom:.25rem;}
+.video-label p{font-size:.8rem;color:var(--muted);}
+
+/* INSTAGRAM */
+.instagram{padding:6rem 4rem;background:var(--dark);text-align:center;}
+.ig-btn{display:inline-flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:var(--white);padding:1rem 2.5rem;border-radius:50px;font-weight:900;font-size:1rem;text-decoration:none;letter-spacing:.04em;transition:all .2s;margin-top:2rem;}
+.ig-btn:hover{transform:translateY(-3px) scale(1.03);}
+.ig-handle{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--white);margin:1rem 0;}
+.ig-handle span{color:var(--pink);}
+
+/* GALLERY */
+.gallery{padding:6rem 4rem;}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem;}
+.gallery-item{border-radius:12px;overflow:hidden;aspect-ratio:1;background:var(--card);border:1px solid rgba(255,255,255,0.06);transition:all .3s;}
+.gallery-item:hover{transform:scale(1.03);border-color:var(--yellow);}
+.gallery-item img{width:100%;height:100%;object-fit:cover;}
+
+/* ROBO CUBE */
+.robo-cube{position:fixed;bottom:2rem;right:2rem;z-index:200;}
+.cube-btn{width:80px;height:80px;background:linear-gradient(135deg,var(--pink),var(--blue));border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;color:var(--white);font-size:.6rem;font-weight:900;letter-spacing:.05em;text-transform:uppercase;text-align:center;line-height:1.3;transition:all .3s;animation:robo-pulse 3s ease-in-out infinite;box-shadow:0 0 30px rgba(255,60,172,0.4);}
+.cube-btn:hover{transform:scale(1.1) rotate(5deg);box-shadow:0 0 50px rgba(255,60,172,0.7);}
+.cube-btn .cube-icon{font-size:1.8rem;margin-bottom:.25rem;}
+@keyframes robo-pulse{0%,100%{box-shadow:0 0 30px rgba(255,60,172,0.4);}50%{box-shadow:0 0 50px rgba(0,194,255,0.6);}}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid rgba(255,255,255,0.06);padding:3rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--yellow);}
+.footer-text{font-size:.8rem;color:var(--muted);}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:.8rem;font-weight:700;transition:color .2s;}
+.footer-links a:hover{color:var(--yellow);}
+
+/* SECTION TAGS */
+.section-tag{font-size:.75rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--yellow);margin-bottom:1rem;}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero-left{padding:2rem;min-height:100vh;}
+  .hero-bottom{padding:.75rem 1.5rem;flex-wrap:wrap;gap:.5rem;}
+  .silhouette-wrap{right:-15%;width:55%;}
+  .about,.music,.videos,.gallery,.instagram{padding:4rem 1.5rem;}
+  .about{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  footer{padding:2rem 1.5rem;flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- ROBO CUBE — fixed floating button -->
+<div class="robo-cube">
+  <a href="robome.html" class="cube-btn">
+    <span class="cube-icon">🤖</span>
+    Robo Me
+  </a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">TAARKIK</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#gallery">Pics</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:60px;">
+  <!-- LEFT — name panel -->
+  <div class="hero-left">
+    <div class="sticker" style="top:5rem;left:2rem;">Orlando 🇺🇸</div>
+    <div class="pop-name" style="position:relative;z-index:3;">
+      <span class="n1" style="font-size:clamp(4rem,11vw,10rem);font-weight:900;">TAARKIK</span>
+      <span style="font-family:'Permanent Marker',cursive;font-size:clamp(1.5rem,4vw,3rem);color:var(--black);opacity:0.7;display:block;margin-top:.25rem;animation:stamp 1s cubic-bezier(.17,.67,.35,1.2) .2s both;">vajyoth</span>
+    </div>
+    <div class="scroll-hint" style="position:relative;bottom:auto;left:auto;margin-top:2rem;color:rgba(0,0,0,0.4);z-index:3;">↓ scroll</div>
+
+    <div class="silhouette-wrap">
+      <img src="images/taarkik-silhouette.png" alt="Taarkik silhouette">
+    </div>
+  </div>
+
+
+
+  <!-- BOTTOM BAR -->
+  <div class="hero-bottom">
+    <div class="hero-tag-pop">DJ · Rock Star · Sportsman · Orlando USA</div>
+    <div class="hero-nav-pills">
+      <a href="#music" class="hero-nav-pill y">🎵 Music</a>
+      <a href="#gallery" class="hero-nav-pill o">📸 Pics</a>
+      <a href="#videos" class="hero-nav-pill o">🎬 Videos</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-img-wrap fade-up">
+    <div class="about-img-frame">
+      <img src="images/pool.JPG" alt="Taarkik" onerror="this.style.background='#1a1a1a';this.style.minHeight='400px';">
+    </div>
+    <div class="about-img-badge">DJ · Rock Star<br>Sportsman</div>
+  </div>
+  <div class="about-content fade-up">
+    <div class="section-tag">My Story</div>
+    <h2 class="section-title">The first and<br>only <span>kid.</span></h2>
+    <p class="about-text">I am the first and only kid of the very crazy couple. My mom said when she was pregnant, she used to listen to <strong>Metallica and RATM</strong>. My dad was busy eating kabobs and biryani in Hyderabad. My grandparents were pampering me 24/7.</p>
+    <p class="about-text">Growing up in <strong>Orlando</strong> — playing every sport, making music, and just living life the only way I know how: <strong>loud, fast, and fun.</strong></p>
+    <div style="display:flex;gap:2rem;margin-top:2rem;">
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--yellow);">10+</div>
+        <div style="font-size:.8rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Years Old</div>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--pink);">∞</div>
+        <div style="font-size:.8rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Energy</div>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--blue);">100%</div>
+        <div style="font-size:.8rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Fun</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section id="music" class="music">
+  <div class="section-tag fade-up">🎵 Music</div>
+  <h2 class="section-title fade-up">My <span>Tracks</span></h2>
+  <div class="music-grid">
+    <div class="track-card fade-up">
+      <iframe class="track-iframe" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/944034616&color=%23FFE600&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+      </iframe>
+      <div class="track-label">
+        <h3>Dr Red</h3>
+        <p>Taarkik is my best friend — featuring Vennela's vocals</p>
+      </div>
+    </div>
+    <div class="track-card fade-up">
+      <iframe class="track-iframe" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/941092654&color=%23FF3CAC&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+      </iframe>
+      <div class="track-label">
+        <h3>Taarkik 2020</h3>
+        <p>A little talk about 2020 during Thanksgiving dinner</p>
+      </div>
+    </div>
+    <div class="track-card fade-up">
+      <iframe class="track-iframe" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/935343334&color=%2300C2FF&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+      </iframe>
+      <div class="track-label">
+        <h3>Spanish Spin</h3>
+        <p>Small clips from my stage show in India — all in Spanish</p>
+      </div>
+    </div>
+    <div class="track-card fade-up">
+      <iframe class="track-iframe" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/945686170&color=%2300FF87&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+      </iframe>
+      <div class="track-label">
+        <h3>I Love U Bubba</h3>
+        <p>A song dedicated to my uncle Bubba</p>
+      </div>
+    </div>
+    <div class="track-card fade-up">
+      <iframe class="track-iframe" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/935379304&color=%23FFE600&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+      </iframe>
+      <div class="track-label">
+        <h3>Pithadey</h3>
+        <p>Zombie Remix</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos" class="videos">
+  <div class="section-tag fade-up">🎬 Videos</div>
+  <h2 class="section-title fade-up">Watch <span>Me Go</span></h2>
+  <div class="videos-grid">
+    <div class="video-card fade-up">
+      <iframe src="https://www.youtube.com/embed/ik_chBOljpI" allowfullscreen></iframe>
+      <div class="video-label">
+        <h3>Speed Test</h3>
+        <p>Let's see how fast I am</p>
+      </div>
+    </div>
+    <div class="video-card fade-up">
+      <iframe src="https://www.youtube.com/embed/cuo5GRW2Vig" allowfullscreen></iframe>
+      <div class="video-label">
+        <h3>Chilling</h3>
+        <p>It's the weekend — chilling with DJ Snake in the hot tub</p>
+      </div>
+    </div>
+    <div class="video-card fade-up">
+      <iframe src="https://www.youtube.com/embed/P17gPitIsKU" allowfullscreen></iframe>
+      <div class="video-label">
+        <h3>Miss You Beta</h3>
+        <p>Every time I go to India — my dad makes these videos for me</p>
+      </div>
+    </div>
+    <div class="video-card fade-up">
+      <iframe src="https://www.youtube.com/embed/kE3AYr5DTDw" allowfullscreen></iframe>
+      <div class="video-label">
+        <h3>Batman vs Alien</h3>
+        <p>My first movie — I was the cameraman and Batman</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section id="instagram" class="instagram">
+  <div class="section-tag fade-up">📱 Instagram</div>
+  <h2 class="section-title fade-up">Follow the <span>Vibe</span></h2>
+  <p style="color:var(--muted);font-size:1rem;margin-top:.5rem;" class="fade-up">Reels, clips, and moments from my world — check out my dad's page too</p>
+  <div class="ig-handle fade-up">@<span>hifiarjun</span></div>
+  <a href="https://www.instagram.com/hifiarjun" target="_blank" class="ig-btn fade-up">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    Follow @hifiarjun on Instagram
+  </a>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery">
+  <div class="section-tag fade-up">📸 Gallery</div>
+  <h2 class="section-title fade-up">My <span>Pics</span></h2>
+  <div class="gallery-grid">
+    <div class="gallery-item fade-up"><img src="images/portfolio/1.jpg" alt="Taarkik" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="images/portfolio/2.jpg" alt="Taarkik" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="images/portfolio/3.jpg" alt="Taarkik" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="images/portfolio/4.jpg" alt="Taarkik" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="images/portfolio/5.jpg" alt="Taarkik" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="images/portfolio/6.jpg" alt="Taarkik" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="images/portfolio/7.jpg" alt="Taarkik" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="images/portfolio/8.jpg" alt="Taarkik" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="images/portfolio/9.jpg" alt="Taarkik" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="images/portfolio/14.jpg" alt="Taarkik" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="images/portfolio/11.jpg" alt="Taarkik" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="images/portfolio/12.jpg" alt="Taarkik" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:6rem 4rem;background:var(--dark);text-align:center;">
+  <div class="section-tag fade-up">📬 Contact</div>
+  <h2 class="section-title fade-up">Get In <span>Touch</span></h2>
+  <p style="color:var(--muted);margin:1rem auto 2.5rem;max-width:400px;" class="fade-up">Orlando, United States · Always down to connect</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;" class="fade-up">
+    <a href="mailto:taarkik@gmail.com" class="btn-yellow">✉️ taarkik@gmail.com</a>
+    <a href="https://www.instagram.com/hifiarjun" target="_blank" class="btn-ghost">📱 Instagram</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">TAARKIK VJ</div>
+  <div class="footer-text">© 2026 Taarkik Vajyoth · Orlando, USA</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#music">Music</a>
+    <a href="#videos">Videos</a>
+    <a href="robome.html">🤖 Robo Me</a>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.style.width='30px'; cursor.style.height='30px'; });
+  el.addEventListener('mouseleave', () => { cursor.style.width='16px'; cursor.style.height='16px'; });
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if(e.isIntersecting){
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
